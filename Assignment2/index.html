@@ -20,7 +20,7 @@
 			background-color: #555555;
 			background-image: url(Assignment2/GrayBrickBackground.png);
 			background-size: cover;
-			//background-repeat: repeat;
+			background-repeat: repeat;
 		}
 		
 		h1 {
@@ -115,17 +115,20 @@
 		
 			<button
 				class="thumbnail"
-				type="button" onclick="changeVideo('CrownAvenuePromoVideo.mov', 'PromoVideoTumbnail.JPG', 'Crown Avenue performing live in Las Vegas')">
+				type="button" onclick="changeVideo(
+					'CrownAvenuePromoVideo.mov',
+					'PromoVideoTumbnail.JPG',
+					'Crown Avenue performing live in Las Vegas')">
 			
 				<img src="PromoVideoThumbnail.JPG" alt="Crown Avenue performing at the New York New York Casino"/>
 			</button>
 			
 			<button
 				class="thumbnail"
-				type="button"
-				onClick="changeVideo('mainVideo.mov',
-						 'MainVideoThumbnail.jpg',
-						 'Crown Avenue performing live in Las Vegas')">
+				type="button" onclick="changeVideo(
+					'mainVideo.mov',
+					'MainVideoThumbnail.png',
+					'Crown Avenue performing live in Las Vegas')">
 			
 				<img src="MainVideoThumbnail.png" alt="Crown Avenue performing live in Las Vegas"/>
 			</button>
@@ -133,7 +136,7 @@
 			<button
 				class="thumbnail"
 				type="button"
-				onClick="changeVideo(
+				onclick="changeVideo(
 					'rhythmAndRiffs.mov',
 					'rhythmAndRiffsThumbnail.jpg',
 					'Crown Avenue live at Rhythm and Riffs Lounge')">
