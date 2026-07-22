@@ -6,8 +6,13 @@
 	<title>Crown Avenue | Explore Our Sound</title>
 	
 	<style>
+
+		@font-face {
+			font-family: "Woodward";
+			src: url("Woodward-Regular.ttf") format("truetype");
+		}
 		
-		# page {
+		#page {
 			width: 1024px;
 			min-height: 900px;
 			margin: 0 auto;
@@ -25,7 +30,7 @@
 		
 		h1 {
 			margin: 0 0 20px 0;
-			font-family: "Woodward-Regular.ttf", Woodward, serif;
+			font-family: "Woodward", Impact, sans-serif;
 			font-size: 68pt;
 			font-weight: normal;
 			letter-spacing: 5px;
@@ -81,7 +86,8 @@
 			display: block;
 			object-fit: cover;
 		}
-		
+
+/*The border chages on hover to indicate the video is a clickable button.*/	
 		.thumbnail:hover {
 			border-color: #96011b;
 		}
@@ -100,10 +106,13 @@
 		
 		<div id="featureVideo">
 			
+<!--This video player is the required centered video for the assignment.-->			
 			<video id="mainVideo" controls poster="MainVideoThumbnail.png">
 				
 				<source src="mainVideo.mov" type="video/mp4">
 				
+<!--This is text that will appear if the video fails to load-->
+				Your browser does not support this video playback.
 			</video>
 			
 			<p id="videoCaption">
@@ -112,7 +121,8 @@
 		</div>
 		
 		<div id="videoOptions">
-		
+<!--These thumbnails are options for other demo videos.
+	In the final site, this will be a scrolling video carousel with navigation arrows on either side of the list.>		
 			<button
 				class="thumbnail"
 				type="button" onclick="changeVideo(
@@ -147,7 +157,7 @@
 		</div>
 	
 	</div>
-	
+<!--I used JavaScript to make the video buttons on the bottom load in a new video, poster image, and caption to the centered video player.-->	
 	<script>
 	
 		function changeVideo(videoFile, posterFile, captionText) {
