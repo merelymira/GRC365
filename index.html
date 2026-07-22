@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	
+	<title>Crown Avenue | Explore Our Sound</title>
+	
+	<style>
+		
+		# page {
+			width: 1024px;
+			min-height: 900px;
+			margin: 0 auto;
+			padding: 20px 0 50px 0;
+		}
+		
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: #555555;
+			background-image: url(GrayBrickBackground.png);
+			background-size: cover;
+			background-repeat: repeat;
+		}
+		
+		h1 {
+			margin: 0 0 20px 0;
+			font-family: "Woodward-Regular.ttf", Woodward, serif;
+			font-size: 68pt;
+			font-weight: normal;
+			letter-spacing: 5px;
+			text-align: center;
+			text-transform: uppercase;
+			color: white;
+			text-shadow: 3px 4px 2px #96011b;
+		}
+		
+		#featureVideo {
+			width: 820px;
+			margin: 0 auto;
+		}
+		
+		video {
+			width: 820px;
+			display: block;
+			margin: 0 auto;
+			background-color: black;
+			border: 1px solid #222222;
+			border-radius: 4px;
+			box-shadow: 2px 3px 8px #222222;
+		}
+		
+		#videoCaption {
+			margin: 15px 0 0 0;
+			font: 14pt/1.4em Georgia, serif;
+			text-align: center;
+			color: white;
+			text-shadow: 1px 1px 2px black;
+		}
+		
+		#videoOptions {
+			width: 820px;
+			margin: 35px auto 0 auto;
+			text-align: center;
+		}
+		
+		.thumbnail {
+			width: 180px;
+			height: 105px;
+			margin: 0 10px;
+			padding: 0;
+			background-color: black;
+			border: 3px solid #33445a;
+			box-shadow: 2px 3px 6px #333333;
+			cursor: pointer;
+		}
+		
+		.thumbnail img {
+			width: 180px;
+			height: 105px;
+			display: block;
+			object-fit: cover;
+		}
+		
+		.thumbnail:hover {
+			border-color: #96011b;
+		}
+		
+		.thumbnail:focus {
+			outline: 3px solid white;
+		}
+		
+	</style>
+</head>
+
+<body>
+	<div id="page">
+		
+		<h1>Explore Our Sound</h1>
+		
+		<div id="featureVideo">
+			
+			<video id="mainVideo" controls poster="MainVideoThumbnail.png">
+				
+				<source src="mainVideo.mov" type="video/mp4">
+				
+			</video>
+			
+			<p id="videoCaption">
+				Crown Avenue performing live in Las Vegas
+			</p>
+		</div>
+		
+		<div id="videoOptions">
+		
+			<button
+				class="thumbnail"
+				type="button" onclick="changeVideo('CrownAvenuePromoVideo.mov', 'PromoVideoTumbnail.JPG', 'Crown Avenue performing live in Las Vegas')">
+			
+				<img src="PromoVideoThumbnail.JPG" alt="Crown Avenue performing at the New York New York Casino"/>
+			</button>
+			
+			<button
+				class="thumbnail"
+				type="button"
+				onClick="changeVideo('mainVideo.mov',
+						 'MainVideoThumbnail.JPG',
+						 'Crown Avenue performing live in Las Vegas')">
+			
+				<img src="MainVideoThumbnail.png" alt="Crown Avenue performing live in Las Vegas"/>
+			</button>
+			
+			<button
+				class="thumbnail"
+				type="button"
+				onClick="changeVideo(
+					'rhythmAndRiffs.mov',
+					'rhythmAndRiffsThumbnail.jpg',
+					'Crown Avenue live at Rhythm and Riffs Lounge')">
+			
+				<img src="rhythmAndRiffsThumbnail.jpg" alt="Crown Avenue live at Rhythm and Riffs Lounge"/>
+			</button>
+			
+		</div>
+	
+	</div>
+	
+	<script>
+	
+		function changeVideo(videoFile, posterFile, captionText) {
+			const video = document.getElementById("mainVideo");
+			const caption = document.getElementById("videoCaption");
+			
+			video.pause();
+			video.src = videoFile;
+			video.poster= posterFile;
+			caption.textContent = captionText;
+			video.load();
+		}
+	</script>
+</body>
+</html>
