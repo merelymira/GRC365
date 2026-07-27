@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+	
+		<title>Crown Avenue Schedule</title>
+	
+		<style>
+	
+			@font-face {
+				font-family: "Woodward";
+				src: url("Woodward-Regular.ttf") format("truetype");
+			}
+		
+			body {
+				margin: 0;
+				padding: 0;
+				background-color: black;
+			}
+		
+			#page {
+				width: 1024px;
+				min-height: 1224px;
+				margin: 0 auto;
+				padding: 40px 70px 60px 70px;
+				box-sizing: border-box;
+				background-image: url("Schedule_Background2.jpg");
+				background-repeat: no-repeat;
+				background-position: center top;
+				background-size: cover;
+				border: 1px solid #222222;
+				box-shadow: 0 0 12px #333333;
+			}
+			
+			h1 {
+				margin: 0 0 25px 0;
+				font-family: "Woodward", Impact, sans-serif;
+				font-size: 64pt;
+				font-weight: normal;
+				letter-spacing: 5px;
+				text-align: center;
+				text-transform: uppercase;
+				color: white;
+				text-shadow: 3px 4px 3px black;
+			}
+			
+			table {
+				width: 100%;
+				margin: 0 auto;
+				border-collapse: collapse;
+				color: white;
+				font-family: Arial, Helvetica, sans-serif;
+				font-size: 22pt;
+				line-height: 1.3em;
+				text-shadow: 1px 2px 3px black;
+			}
+			
+			thead {
+				position: absolute;
+				width: 1px;
+				height: 1px;
+				overflow: hidden;
+				clip: rect(0 0 0 0);
+				white-space: nowrap;
+			}
+			
+			th, td {
+				padding: 26px 20px;
+				text-align: left;
+			}
+			
+			td:nth-child(1) {
+				width: 30%;
+			}
+			
+			td:nth-child(2) {
+				width: 35%;
+			}
+			
+			td:nth-child(3) {
+				width: 35%;
+			}
+			
+			tbody tr:nth-child(even) {
+				background-color: rgba(255, 255, 255, 0.03);
+			}
+			
+			tbody tr:hover {
+				background-color: rgba(150, 1, 27, 0.18);
+			}
+	
+		</style>
+	
+	</head>
+
+	<body>
+		
+		<div id="page">
+		
+		<!--This assignment focuses on the Upcoming Shows table. In the final version of this website, this section will appear on a Scedule page with a universal navigation header and footer and also include a "Past Venues" section that include logos of the places the band has previously performed.-->
+			
+			<h1>Upcoming Shows</h1>
+			
+		<!--The table header is included for proper table structure. It is visible in this version to match the assignment requirements, but in the final version of the site, it will be visually hidden as it isn't necessary for the overall design.-->
+			
+			<table>
+			
+				<thead>
+			
+					<tr>
+				
+						<th scope="col">Date</th>
+						<th scope="col">Time</th>
+						<th scope="col">Venue</th>
+						
+					</tr>
+					
+				</thead>
+				
+				<tbody>
+					
+					<tr>
+					
+						<td>Aug. 4</td>
+						<td>9pm &ndash; 1am</td>
+						<td>Golden Nugget</td>
+					
+					</tr>
+					
+					<tr>
+					
+						<td>Aug. 11</td>
+						<td>9pm &ndash; 1am</td>
+						<td>The Excalibur</td>
+					
+					</tr>
+					
+					<tr>
+					
+						<td>Aug. 12</td>
+						<td>10pm &ndash; 2am</td>
+						<td>Carnaval Court</td>
+					
+					</tr>
+					
+					<tr>
+					
+						<td>Aug. 19</td>
+						<td>9pm &ndash; 1am</td>
+						<td>Golden Nugget</td>
+					
+					</tr>
+					
+					<tr>
+					
+						<td>Aug. 25</td>
+						<td>8pm &ndash; 12am</td>
+						<td>NYNY Bridge</td>
+					
+					</tr>
+					
+					<tr>
+					
+						<td>Aug. 26</td>
+						<td>10pm &ndash; 2am</td>
+						<td>Carnaval Court</td>
+					
+					</tr>
+				
+				</tbody>
+			
+			</table>
+		
+		</div>
+		
+	</body>
+</html>
