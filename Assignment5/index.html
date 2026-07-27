@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		
+		<title>Crown Avenue | Moments on Stage</title>
+		
+		<style>
+		
+			@font-face {
+				font-family: "Woodward";
+				src: url("Woodward-Regular.ttf") format("truetype");
+			}
+			
+			body {
+				margin: 0;
+				padding: 0;
+				background-color: #555555;
+				background-image: url("GrayBrickBackground.png");
+				background-repeat: repeat;
+				background-size: cover;
+			}
+			
+			#page {
+				width: 1024px;
+				min-height: 900px;
+				margin: 0 auto;
+				padding: 35px 60px 60px 60px;
+				box-sizing: border-box;
+			}
+			
+			h1 {
+				margin: 0 0 10px 0;
+				font-family: "Woodward", Impact, sans-serif;
+				font-size: 58pt;
+				font-weight: normal;
+				letter-spacing: 5px;
+				text-align: center;
+				text-transform: uppercase;
+				color: white;
+				text-shadow: 3px 4px 2px #96011b;
+			}
+			
+			#intro {
+				width: 760px;
+				margin: 0 auto 30px auto;
+				font: 13pt/1.4em Georgia, "Times New Roman", serif;
+				text-allign: center;
+				color: white;
+				text-shadow: 1px 1px 2px black;
+			}
+			
+			/* This page was specifically designed usig the CSS Grid layout using some photos I've taken from Crown Avenue. It's not currently part of the final website structure, but the layout could later be adapted for a featured gallery section */
+			
+			#photoGrid {
+				width: 804px;
+				margin: 0 auto;
+				display: grid;
+				
+				/* Three rows are defined first, then two columns. The left column contains three landscape photos, and the portrait photo spans all three rows on the right. */
+				
+				grid-template: repeat(3, 180px) / 470px 310px;
+				gap: 12px;
+				padding: 12px;
+				background-color: rgba(0, 0, 0, 0.35);
+				border: 1px solid #333333;
+				box-shadow: 3px 4px 10px #222222;
+			}
+			
+			#photoGrid img {
+				width: 100%;
+				height: 100%;
+				display: block;
+				object-fit: cover;
+				border: 1px solid #222222;
+				box-sizing: border-box;
+			}
+			
+			#photoGrid img:nth-child(1) {
+				grid-area: 1/1/2/2;
+			}
+			
+			#photoGrid img:nth-child(2) {
+				grid-area: 2/1/3/2;
+			}
+			
+			#photoGrid img:nth-child(3) {
+				grid-area: 3/1/4/2;
+			}
+			
+			#photoGrid img:nth-child(4) {
+				grid-area: 1/2/4/3;
+			}
+		
+		</style>
+		
+	</head>
+
+	<body>
+		
+		<div id="page">
+		
+			<h1>Moments on Stage</h1>
+			
+			<p id="intro">
+			
+				A collection of live Crown Avenue performances captured across Las Vegas venues.
+				
+			</p>
+			
+			<div id="photoGrid">
+			
+				<img src="LandscapePhoto01.jpg" alt="Crown Avenue performing at Rhythm &amp; Riffs"/>
+				
+				<img src="LandscapePhoto02.jpg" alt="Crown Avenue performing for a dancing audience"/>
+				
+				<img src="LandscapePhoto03.jpg" alt="Crown Avenue performing at NYNY Bridge"/>
+				
+				<img src="PortraitPhoto01.jpg" alt="A vertical photograph of Crown Avenue performing live on stage"/>
+			
+			</div>
+		
+		</div>
+		
+	</body>
+</html>
