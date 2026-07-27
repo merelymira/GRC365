@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		
+		<title>Booking Form</title>
+		
+		<style>
+		
+			@font-face {
+				font-family: "Woodward";
+				src: url("Woodward-Regular.ttf") format("truetype");
+			}
+			
+			body {
+				margin: 0;
+				padding: 0;
+				background-color: #111111;
+				background-image: url("BookingBackground.jpg");
+				background-repeat: no-repeat;
+				background-position: center top;
+				background-size: cover;
+			}
+			
+			body::before {
+				content:"";
+				position: fixed;
+				inset: 0;
+				background: rgba(0, 0, 0, 0.30);
+				pointer-events: none;
+				z-index: -1;
+			}
+			
+			#page {
+				width: 1024px;
+				min-height: 1000px;
+				margin: 0 auto;
+				padding: 35px 0 70px 0;
+				box-sizing: border-box;
+			}
+			
+			h1 {
+				margin: 0 0 10px 0;
+				font-family: "Woodward", Impact, sans-serif;
+				font-size: 60pt;
+				font-weight: normal;
+				letter-spacing: 5px;
+				text-align: center;
+				text-transform: uppercase;
+				color: white;
+				text-shadow: 3px 4px 3px #333333;
+			}
+			
+			#intro {
+				width: 650px;
+				margin: 0 auto 20px auto;
+				font: 14pt/1.4em Georgia, "Times New Roman", serif;
+				text-align: center;
+				color: white;
+				text-shadow: 1px 1px 2px black;
+			}
+			
+			form {
+				width: 650px;
+				margin: 0 auto;
+				padding: 20px 30px;
+				box-sizing: border-box;
+				background-color: rgba(235, 235, 235, 0.72);
+				border: 1px solid dimgray;
+				border-radius: 6px;
+				box-shadow: 2px 3px 8px #222222;
+			}
+			
+			.formRow {
+				display: flex;
+				align-times: center;
+				margin-bottom: 18px;
+			}
+			
+			label {
+				width: 180px;
+				font-family: "Woodward", Impact, sans-serif;
+				font-size: 23pt;
+				letter-spacing: 2px;
+				color: #4b1720;
+				text-transform: uppercase;
+				text-shadow: 3px 4px 3px #eeeeee;
+			}
+			
+			input, select, textarea {
+				width: 100%;
+				padding: 10px;
+				box-sizing: border-box;
+				border: 1px solid #777777;
+				border-radius: 4px;
+				background-color: white;
+				font: 12pt/1.3em Georgia, "Times New Roman", serif;
+				color: #333333;
+			}
+			
+			input:focus, select:focus, textarea:focus {
+				outline: 2px solid #a90021;
+			}
+			
+			textarea {
+				height: 150px;
+				resze: vertical;
+			}
+			
+			#messageRow {
+				align-items: flex-start;
+			}
+			
+			#messageRow label {
+				padding-top: 8px;
+			}
+			
+			#submitButton {
+				width: 320px;
+				display: block;
+				margin: 20px auto 0 auto;
+				padding: 10px;
+				background-color: #b00020;
+				color: white;
+				border: 1px solid #740015;
+				border-radius: 4px;
+				box-shadow: 2px 3px 5px #666666;
+				font-family: "Woodward", Impact, sans-serif;
+				font-size: 24pt;
+				letter-spacing: 2px;
+				text-transform: uppercase;
+				cursor: pointer;
+			}
+			
+			#submitButton:hover {
+				background-color: #850018;
+			}
+		
+		</style>
+		
+	</head>
+
+	<body>
+		
+		<div id="page">
+		
+		<!--This assignment focuses on the booking contact form. In the final version of the Crown Avenue website, the form will be on a page with an FAQ section-->
+			
+			<h1>Booking Crown Avenue</h1>
+			
+			<p id="intro">
+			
+				Ready to elevate your event with the unmatched energy of Crown Avenue? Fill out the form below to secure your date and let the music take center stage at your next unforgettable celebration.
+			
+			</p>
+			
+		<!--This form is just a visual demonstration and isn't currently connected to a form-processing service.-->
+			
+			<form action="#" method="post">
+			
+				<div class="formRow">
+				
+					<label for"name">Name</label>
+					
+					<input type="text" id="name" name="name" placeholder="John Doe" required>
+				
+				</div>
+				
+				<div class="formRow">
+				
+					<label for="email">Email</label>
+					
+					<input type="email" id="email" name="email" placeholder="name@email.com" required>
+				
+				</div>
+				
+				<div class="formRow">
+				
+					<label for="phone">Phone Number</label>
+					
+					<input type="tel" id="phone" name="phone" placeholder="555-555-5555">
+				
+				</div>
+				
+				<div class="formRow">
+				
+					<label for="eventDate">Event Date</label>
+					
+					<input type="date" id="eventDate" name="eventDate">
+				
+				</div>
+				
+				<div class="formRow">
+				
+					<label for="eventType">Event Type</label>
+					
+					<select id="eventType" name="eventType">
+					
+						<option value="">--Select One--</option>
+						<option value="wedding">Wedding</option>
+						<option value="corporate">Corporate Event</option>
+						<option value="casino">Casino or Hotel Event</option>
+						<option value="private-party">Private Party</option>
+						<option value="festival">Festival</option>
+						<option value="other">Other</option>
+					
+					</select>
+				
+				</div>
+				
+				<div class="formRow">
+				
+					<label for="location">Location</label>
+					
+					<input type="text" id="location" name="location" placeholder="Venue, City, State">
+				
+				</div>
+				
+				<div class="formRow" id="messageRow">
+				
+					<label for="message">Event Details</label>
+					
+					<textarea id="message" name="message" placeholder="Please tell us a little more about your event"></textarea>
+				
+				</div>
+				
+				<input type="submit" id="submitButton" value="Book the Band"/>
+			
+			</form>
+		
+		</div>
+		
+	</body>
+</html>
