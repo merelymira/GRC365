@@ -1,0 +1,695 @@
+<!doctype html>
+<html lang="en">
+	<head>
+	
+		<meta charset="UTF-8">
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>Merely Mira | Portfolio</title>
+		
+		<link rel="icon" href="Mirafavicon.ico"/>
+		
+		<style>
+		
+			@font-face {
+				font-family: Abigail;
+				src: url("abigail-Regular.ttf") format("truetype");
+			}
+			
+			@font-face {
+				font-family: Coconat;
+				src: url("Coconat-Regular.otf") format("opentype");
+			}
+			
+			@keyframes flowerFloatIn {
+				0% {
+					opacity: 0;
+					transform: translateY(25px);
+				}
+				
+				100% {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+			
+			@keyframes leftFlowerFloatIn {
+					0% {
+					opacity: 0;
+					transform: translateX(-20px)
+						translateY(20px)
+						rotate(-8deg);
+				}
+				
+				100% {
+					opacity: 1;
+					transform: translateX(0) translateY(0) rotate(0)
+				}
+			}
+			
+			@keyframes rightFlowerFloatIn {
+				0% {
+					opacity: 0;
+					transform: translateX(20px)
+						translateY(20px)
+						rotate(8deg);
+				}
+				
+				100% {
+					opacity: 1;
+					transform: translateX(0) translateY(0) rotate(0deg);
+				}
+			}
+			
+			* {
+				box-sizing: border-box;
+			}
+			
+			body {
+				margin: 0;
+				padding: 0;
+				background-color: #F6F4F0;
+				color: #414141;
+			}
+			
+			#page {
+				width: 1024px;
+				max-width: 100%;
+				min-height: 1224px;
+				margin: 0 auto;
+				padding: 18px 25px 0 25px;
+				background-color: #F6F4F0;
+				box-shadow: 0 0 12px #b8b8b8;
+			}
+			
+			img {
+				max-width: 100%;
+			}
+			
+			/* Universal typography */
+			
+			h1, h2, h3, p {
+				margin-top: 0;
+			}
+			
+			a {
+				color: inherit;
+				text-decoration: none;
+			}
+			
+			/* Header and navigation */
+			
+			header {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				padding-bottom: 10px;
+				border-bottom: 1px solid #414141;
+			}
+			
+			#siteName, nav {
+				margin: 0;
+				font-family: "Abigail", Arial, sans-serif;
+				font-size: 15pt;
+				font-weight: normal;
+				color: #414141;
+			}
+			
+			nav {
+				font-size: 14pt;
+			}
+			
+			nav a {
+				padding: 0 10px;
+				border-right: 1px solid #414141;
+			}
+			
+			nav a:last-child {
+				padding-right: 0;
+				border-right: none;
+			}
+			
+			nav a:hover {
+				color: #B6D4CE;
+			}
+			
+			/* Hero Section */
+			
+			#hero {
+				display: grid;
+				grid-template-columns: 1.15fr 0.85fr;
+				gap: 65px;
+				align-items: center;
+				padding: 38px 60px 20px 60px;
+			}
+			
+			#heroText {
+				position: relative;
+			}
+			
+			#heroTitle {
+				margin-bottom: 20px;
+				font-family: "Abigail", Arial, sans-serif;
+				font-size: 52pt;
+				line-height: 0.92em;
+				font-weight: normal;
+				color: #414141;
+				text-shadow: 2px 2px 2px #bbbbbb;
+				position: relative;
+				z-index: 1;
+				pointer-events: none;
+			}
+			
+			/* The wrapper is stationary so the cursor doesn't repeatedly leave the hover area while the flower rotates */
+			
+			#flowerAccentWrapper {
+				position: absolute;
+				width: 195px;
+				height: 195px;
+				top: -45px;
+				left: 168px;
+				z-index: 0;
+				cursor: pointer;
+			}
+			
+		/*	#flowerAccentWrapper::after {
+				content: "";
+				position: absolute;
+				inset: 0;
+				z-index:3;
+			} */
+			
+			#flowerAccent {
+				width: 100%;
+				height: 100%;
+				display: block;
+				transform: rotate(150deg);
+				transform-origin: center;
+			}
+			
+			/* This makes the flower rotate one full rotation from its original 150-degree position */
+			
+			@keyframes flowerSpin {
+				from {
+					transform: rotate(150deg);
+				}
+				
+				to {
+					transform: rotate(510deg);
+				}
+			}
+			
+			#flowerAccentWrapper:hover #flowerAccent {
+				animation: flowerSpin 1.3s ease-in-out forwards;
+			}
+			
+			#heroTitle {
+				position: relative;
+				z-index: 1;
+			}
+			
+			#tagline {
+				margin-top: 30px;
+				margin-bottom: 20px;
+				font-family: "Coconat", Georgia, serif;
+				font-size: 17pt;
+				line-height: 1.15em;
+				letter-spacing: 1px;
+				color: #45595A;
+			}
+			
+			#intro {
+				margin-bottom: 18px;
+				font-family: "Coconat", Georgia, serif;
+				font-size: 11pt;
+				line-height: 1.35em;
+				color: #45595A;
+			}
+			
+			#aboutLink {
+				display: block;
+				margin: 20px 0 0 15px;
+				font-family: "Coconat", Georgia, serif;
+				font-size: 10pt;
+				letter-spacing: 0.8px;
+				color: #45595A;
+			}
+			
+			#aboutLink:hover {
+				text-decoration: underline;
+			}
+			
+			#caseStudiesButton {
+				width: 68px;
+				height: 68px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				margin: 16px auto 0 auto;
+				border-radius: 50%;
+				background-color: #B6D4CE;
+				box-shadow: 2px 3px 5px #bbbbbb;
+				font-family: "Abigail", Arial, sans-serif;
+				font-size: 10pt;
+				line-height: 1.05em;
+				text-align: center;
+				color: #45595A;
+				text-decoration: none;
+			}
+			
+			#caseStudiesButton:hover {
+				background-color: #A8C8C1;
+			}
+			
+			#portrait {
+				width: 340px;
+				height: 410px;
+				display: block;
+				object-fit: cover;
+				border-radius: 22px;
+				box-shadow: 2px 3px 6px #aaaaaa;
+			}
+			
+			/* Recent Work Heading */
+			
+			#workHeading {
+				height: 110px;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				padding: 0 35px;
+				background-color: #45595A;
+			}
+			
+			#workHeading img {
+				width: 85px;
+			}
+			
+			#workHeading h2 {
+				margin: 0;
+				font-family: "Abigail", Arial, sans-serif;
+				font-size: clamp(28pt, 5vw, 45pt);
+				font-weight: normal;
+				letter-spacing: 1px;
+				color: #F6F4F0;
+				text-shadow: 2px 2px 2px #273536;
+			}
+			
+			#leftFlower, #rightFlower {
+					width: 85px;
+					opacity: 0;
+					animation-duration: 1s;
+					animation-fill-mode: forwards;
+					animation-timing-function: ease-out;
+				}
+				
+				#leftFlower {
+					animation-name: leftFlowerFloatIn;
+					animation-delay: .2s;
+				}
+				
+				#rightFlower {
+					animation-name: rightFlowerFloatIn;
+					animation-delay: .45s;
+				}
+			
+			/* Project Cards */
+			
+			#projects {
+				display: flex;
+				justify-content: space-between;
+				gap: 28px;
+				padding: 25px 12px 32px 12px;
+			}
+			
+			.project {
+				position: relative;
+				width: 30%;
+				height: 350px;
+				margin: 0;
+				overflow: hidden;
+				border-radius: 19px;
+				background-color: #d1d1d1;
+			}
+			
+			.project a {
+				position: relative;
+				display: block;
+				width: 100%;
+				height: 100%;
+				color: #F6F4F0;
+			}
+			
+			.project a::after {
+				content: "";
+				position: absolute;
+				inset: 0;
+				background-color: rgba(0, 0, 0, 0.08);
+				transition: background-color 0.25s ease;
+				pointer-events: none;
+			}
+			
+			.project img {
+				width: 100%;
+				height: 100%;
+				display: block;
+				object-fit: cover;
+				object-position: top;
+				transition: transform 0.25s ease;
+			}
+			
+			.project:hover {
+				transform: scale(1.03);
+			}
+			
+			.project:hover a::after {
+				background-color: rgba(0, 0, 0, 0.26);
+			}
+			
+			.project figcaption {
+				position: absolute;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				padding: 70px 14px 14px 14px;
+				background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.88));
+				color: #F6F4F0;
+				pointer-events: none;
+			}
+			
+			.project h3 {
+				margin-bottom: 1px;
+				font-family: "Abigail", Arial, sans-serif;
+				font-size: 17pt;
+				font-weight: normal;
+				line-height: 1.1em;
+				color: #F6F4F0;
+				text-shadow: 1px 2px 3px black;
+			}
+			
+			.project p {
+				margin: 0;
+				font-family: "Coconat", Georgia, serif;
+				font-size: 8.5pt;
+				font-weight: normal;
+				line-height: 1.3em;
+				color: #F6F4F0;
+				text-shadow: 1px 1px 2px black;
+			}
+			
+			/*Footer*/
+			
+			/* These are the supplementary styles that adapt the fixed-width portfoio page for smartphone screens measuring 750px wide or less */
+			
+			@media only screen and (max-width: 750px) {
+				
+				#page {
+					width: 100%;
+					min-height: 0;
+					padding> 15px;
+					box-shadow: none;
+				}
+				
+				header {
+					display: block;
+					text-align: center;
+				}
+				
+				#siteName {
+					margin-bottom: 12px;
+					font-size: 18pt;
+				}
+				
+				nav {
+					display: flex;
+					flex-wrap: wrap;
+					justify-content: center;
+					gap: 8px;
+					font-size: 15pt;
+					line-height: 1.5em;
+				}
+				
+				nav a  {
+					padding: 4.5px;
+				}
+				
+				#hero {
+					display: flex;
+					flex-direction: column;
+					gap: 30px;
+					padding: 30px 15px 25px 15px;
+				}
+				
+				#heroText {
+					width: 100%;
+				}
+				
+				#heroTitle {
+					font-size: 48pt;
+					line-height: 0.95em;
+				}
+				
+				#tagline {
+					font-size: 21pt;
+					line-height: 1.25em;
+				}
+				
+				#intro {
+					font-size: 15pt;
+					line-height: 1.6em;
+				}
+				
+				#aboutLink {
+					margin-left: 0;
+					font-size: 14pt;
+					text-align: center;
+				}
+				
+				#caseStudiesButton {
+					widt: 82px;
+					height: 82px;
+					margin: 22px auto 0 suto;
+					font-size: 13pt;
+				}
+				
+				#portrait {
+					width: 100%;
+					height: auto;
+					max-width: 500px;
+					margin: 0 auto;
+				}
+				
+				#workHeading {
+					height: auto;
+					min-height: 100px;
+					padding: 18px 12px;
+				}
+				
+				#workHeading h2 {
+					font-size: 34pt;
+					line-height: 1em;
+					text-align: center;
+				}
+				
+				#projects {
+					display: block;
+					padding: 25px 0;
+				}
+				
+				.project {
+					width: 90%;
+					height: auto;
+					aspect-ratio: 4 / 5;
+					margin: 0 auto 25px auto;
+				}
+				
+				.project h3 {
+					font-size: 24pt;
+				}
+				
+				.project p {
+					font-size: 13pt;
+					line-height: 1.45em;
+				}
+			}
+		
+		</style>
+		
+	</head>
+
+	<body>
+		<div id="page">
+		
+			<header>
+			
+				<p id="siteName">Mira Rodriguez</p>
+				
+				<nav aria-label="Main navigation">
+				
+					<a href="#">Digital Design</a>
+					
+					<a href="#">Brand Design</a>
+					
+					<a href="#">Photography</a>
+					
+					<a href="#">About Me</a>
+				
+				</nav>
+			
+			</header>
+			
+			<main>
+			
+				<section id="hero">
+				
+					<div id="heroText">
+					
+						<!-- Decorative flower image behind the heading-->
+						
+					  <div id="flowerAccentWrapper">
+							
+							<img id="flowerAccent" src="flowerAccent.png" alt="">
+							
+						</div>
+						
+						<h1 id="heroTitle">
+						
+							Aloha!<br>
+							I&rsquo;m Mira
+						
+						</h1>
+						
+						<p id="tagline">
+						
+							Turning creative visions into<br>
+							user-friendly realities.
+						
+						</p>
+						
+						<p id="intro">
+						
+							I am a UX/UI designer and brand designer who brings a unique blend of creativity and strategic insight to every project. With a rich background as a brand photographer, I excel in transforming abstract concepts into tangible, visually compelling designs that resonate with users.
+						
+						</p>
+						
+						<a id="aboutLink" href="#">
+						
+							Learn more about me here &gt;
+						
+						</a>
+						
+						<a id="caseStudiesButton" href="#projects">
+						
+							<span>Case<br>
+							Studies<br>
+							&darr;</span>
+						
+						</a>
+					
+					</div>
+					
+					<img id="portrait" src="Mira.png" alt="Mira smiling beside a mountain lake"/>
+				
+				</section>
+				
+				<section aria-labelledby="recentWorkTitle">
+				
+					<div id="workHeading">
+					
+						<img id="leftFlower" src="flowerAccent.png" alt=""/>
+						
+						<h2 id="recentWorkTitle">My Most Recent Work</h2>
+						
+						<img id="rightFlower" src="flowerAccent.png" alt=""/>
+					
+					</div>
+					
+					<!--The three caards represent real projects from my design and photography portfolio. Each card will link to a full case study page in the final version of the site-->
+					
+					<div id="projects">
+					
+						<figure class="project">
+						
+							<a href="#">
+							
+								<img src="CrownAvenueProject.png" alt="Crown Avenue website and brand design project"/>
+								
+								<figcaption>
+								
+									<h3>Crown Avenue</h3>
+									
+									<p>
+									
+										UX/UI Design<br>
+										Brand Design<br>
+										Photography
+									
+									</p>
+								
+								</figcaption>
+							
+							</a>
+						
+						</figure>
+						
+						<figure class="project">
+						
+							<a href="#">
+							
+								<img src="DrDanNutritionProject.png" alt="Dr. Dan Nutrition website design project">
+								
+								<figcaption>
+								
+									<h3>Dr. Dan Nutrition</h3>
+									
+									<p>
+									
+										UX/UI Design<br>
+										Web Design
+									
+									</p>
+								
+								</figcaption>
+							
+							</a>
+						
+						</figure>
+						
+						<figure class="project">
+						
+							<a href="#">
+							
+								<img src="GiessweinShoeProject.jpg" alt="Lifestyle photograph created for the Giesswein footwear campaign"/>
+								
+								<figcaption>
+								
+									<h3>Giesswein Campaign</h3>
+									
+									<p>
+									
+										Brand Campaign<br>
+										Commercial photography<br>
+										Art Direction
+									
+									</p>
+								
+								</figcaption>
+							
+							</a>
+						
+						</figure>
+					
+					</div>
+				
+				</section>
+			
+			</main>
+			
+			<!-- The full version of the website will include a footer with additional information and links. For the purpose of this assignment, I left it out.-->
+		
+		</div>
+
+	</body>
+	
+</html>
