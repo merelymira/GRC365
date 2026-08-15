@@ -1,0 +1,703 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+	
+		<title>Crown Avenue Schedule</title>
+	
+		<style>
+	
+			@font-face {
+				font-family: "Woodward";
+				src: url("Woodward-Regular.ttf") format("truetype");
+			}
+			
+			/* Universal Header */
+			header {
+				position: relative;
+				width: 100%;
+				height: 100px;
+				display: flex;
+				align-items: center;
+				padding: 0 25px;
+				box-sizing: border-box;
+				background-color: white;
+				z-index: 10;
+			}
+
+			#headerLogoLink {
+				display: block;
+			}
+
+			#headerLogo {
+				width: 185px;
+				height: auto;
+				display: block;
+			}
+
+			nav {
+				flex: 1;
+				text-align: center;
+			}
+
+			nav a {
+				padding: 0 8px;
+				font-family: Woodward, Arial, sans-serif;
+				font-size: 40px;
+				letter-spacing: 3px;
+				font-weight: normal;
+				color: black;
+				text-decoration: none;
+				border-right: 1px solid #96011b;
+			}
+
+			nav a:last-child {
+				border-right: none;
+			}
+
+			nav a:hover {
+				color: #96011b;
+			}
+
+			#socialLinks {
+				display: flex;
+				align-items: center;
+				gap: 12px;
+			}
+
+			#socialLinks img {
+				width: 40px;
+				height: 40px;
+				display: block;
+				object-fit: contain;
+			}
+		
+			body {
+				margin: 0;
+				padding: 0;
+				background-color: black;
+			}
+		
+			#page {
+				width: 100%;
+				margin: 0;
+			}
+			
+			/* Schedule Page */
+
+			#scheduleSection {
+				width: 100%;
+				min-height: 1050px;
+				padding: 45px 70px 80px 70px;
+				box-sizing: border-box;
+				background-image: url("Schedule_Background.jpg");
+				background-repeat: no-repeat;
+				background-size: cover;
+				background-position: center bottom;
+
+				position: relative;
+			}
+
+			#scheduleSection::before {
+				content: "";
+				position: absolute;
+				inset: 0;
+
+				background:
+					linear-gradient(
+						to bottom,
+						rgba(0, 0, 0, 0.93) 0%,
+						rgba(0, 0, 0, 0.78) 40%,
+						rgba(0, 0, 0, 0.15) 100%
+					);
+			}
+
+			.scheduleWrapper {
+				width: 100%;
+				max-width: 1200px;
+				margin: 0 auto;
+
+				position: relative;
+				z-index: 1;
+			}
+			
+			.scheduleWrapper h1 {
+				margin: 0 0 30px 0;
+
+				font-family: Woodward, Impact, sans-serif;
+				font-size: 64pt;
+				font-weight: normal;
+				line-height: 1em;
+
+				letter-spacing: 5px;
+				text-align: center;
+				text-transform: uppercase;
+
+				color: white;
+				text-shadow: 3px 4px 3px black;
+			}
+			
+			.scheduleWrapper table {
+				width: 100%;
+				max-width: 1050px;
+
+				margin: 0 auto;
+				border-collapse: collapse;
+
+				font-family: Inter, Arial, sans-serif;
+				font-size: 21pt;
+				line-height: 1.3em;
+
+				color: white;
+				text-shadow: 1px 2px 3px black;
+			}
+
+			.scheduleWrapper th,
+			.scheduleWrapper td {
+				padding: 25px 18px;
+				text-align: left;
+			}
+
+			.scheduleWrapper td:nth-child(1) {
+				width: 30%;
+			}
+
+			.scheduleWrapper td:nth-child(2) {
+				width: 35%;
+			}
+
+			.scheduleWrapper td:nth-child(3) {
+				width: 35%;
+			}
+
+			.scheduleWrapper tbody tr {
+				transition: background-color 0.2s ease;
+			}
+
+			.scheduleWrapper tbody tr:hover {
+				background-color: rgba(150, 1, 27, 0.22);
+			}
+			
+			thead {
+				position: absolute;
+				width: 1px;
+				height: 1px;
+				overflow: hidden;
+				clip: rect(0 0 0 0);
+				white-space: nowrap;
+			}
+			
+			/* Past Venues Section */
+
+			#pastVenues {
+				width: 100%;
+				padding: 65px 40px 75px 40px;
+				box-sizing: border-box;
+				background-color: #96011B;
+			}
+
+			.venuesWrapper {
+				width: 100%;
+				max-width: 1200px;
+				margin: 0 auto;
+				text-align: center;
+			}
+
+			.venuesWrapper h2 {
+				margin: 0 0 45px 0;
+				font-family: Woodward, Arial, sans-serif;
+				font-size: 42pt;
+				color: white;
+				font-weight: normal;
+				line-height: 1em;
+				letter-spacing: 2px;
+				text-transform: uppercase;
+			}
+
+			.venueLogos {
+				width: 100%;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				gap: 45px;
+			}
+
+			.venueLogos img {
+				width: auto;
+				max-width: 170px;
+				max-height: 85px;
+				object-fit: contain;
+			}
+
+			.venueLogos img:hover {
+				filter: grayscale(0%);
+				opacity: 1;
+				transform: scale(1.06);
+			}
+			
+			/* Universal Footer */
+		
+			footer {
+				width: 100%;
+				padding: 55px 40px 25px 40px;
+				box-sizing: border-box;
+				background-color: white;
+				color: #222222;
+			}
+
+			.footerWrapper {
+				width: 100%;
+				max-width: 1200px;
+				margin: 0 auto;
+				display: grid;
+				grid-template-columns: 1.2fr 1fr 1.3fr 1fr;
+				gap: 55px;
+				align-items: start;
+			}
+
+			.footerColumn {
+				font-family: Inter, Arial, sans-serif;
+				font-size: 10.5pt;
+				line-height: 1.5em;
+			}
+
+			.footerColumn h2 {
+				margin: 0 0 18px 0;
+				font-family: Woodward, Arial, sans-serif;
+				font-size: 24pt;
+				font-weight: normal;
+				letter-spacing: 2px;
+				line-height: 1em;
+				text-transform: uppercase;
+				color: #222222;
+			}
+
+			.footerColumn p {
+				margin: 0 0 8px 0;
+			}
+
+			.footerColumn a {
+				display: block;
+				margin-bottom: 8px;
+				color: #222222;
+				text-decoration: none;
+				transition: color 0.2s ease;
+			}
+
+			.footerColumn a:hover {
+				color: #96011b;
+			}
+
+
+			/* Footer Logo */
+
+			.footerBrand > a {
+				display: block;
+			}
+
+			.footerBrand > a img {
+				width: 190px;
+				height: auto;
+				display: block;
+				margin-bottom: 22px;
+			}
+
+			/* Footer Social Icons */
+
+			.footerSocials {
+				display: flex;
+				gap: 14px;
+				align-items: center;
+			}
+
+			.footerSocials a {
+				margin: 0;
+			}
+
+			.footerSocials img {
+				width: 30px;
+				height: 30px;
+				display: block;
+				object-fit: contain;
+				transition: transform 0.2s ease;
+			}
+
+			.footerSocials img:hover {
+				transform: scale(1.10);
+			}
+
+			/* Mailing List */
+
+			#mailListForm {
+				display: grid;
+				grid-template-columns: 65px 1fr;
+				gap: 10px;
+				align-items: center;
+			}
+
+			#mailListForm label {
+				font-family: Inter, Arial, sans-serif;
+				font-size: 10pt;
+				color: #222222;
+			}
+
+			#mailListForm input[type="text"],
+			#mailListForm input[type="email"] {
+				width: 100%;
+				padding: 8px;
+				box-sizing: border-box;
+				font-family: Inter, Arial, sans-serif;
+				font-size: 9pt;
+				background-color: white;
+				border: 1px solid #222222;
+				border-radius: 3px;
+			}
+
+			.footerSubmit {
+				grid-column: 1 / 3;
+				width: 95px;
+				margin: 5px auto 0 auto;
+				padding: 7px 12px;
+				font-family: Woodward, Arial, sans-serif;
+				font-size: 15pt;
+				letter-spacing: 1px;
+				color: white;
+				background-color: #96011b;
+				border: 1px solid #640012;
+				border-radius: 3px;
+				cursor: pointer;
+			}
+
+			.footerSubmit:hover {
+				background-color: #640012;
+			}
+
+			/* Copyright */
+
+			#footerBottom {
+				width: 100%;
+				max-width: 1200px;
+				display: flex;
+				justify-content: space-between;
+				margin: 40px auto 0 auto;
+				padding-top: 18px;
+				border-top: 1px solid rgba(255, 255, 255, 0.25);
+			}
+
+			#footerBottom p {
+				margin: 0;
+				font-family: Inter, Arial, sans-serif;
+				font-size: 8.5pt;
+				color: #cccccc;
+			}
+	
+		</style>
+	
+	</head>
+
+	<body>
+		
+		<header>
+
+			<!--Universal navigation-->
+			
+			<a href= "Homepage.html" id= "headerLogoLink">
+
+				<img id= "headerLogo" src= "CrownAvenueLogoOG.png" alt= "Crown Avenue homepage">
+			</a>
+
+			<nav aria-label="Main navigation">
+
+				<a href= "Homepage.html">Home</a>
+				<a href= "MeetTheBand.html">Meet the Band</a>
+				<a href="Gallery.html">Gallery</a>
+				<a href="ExploreOurSound.html">Explore Our Sound</a>
+				<a href="Schedule.html">Schedule</a>
+				<a href= "Booking.html">Book Us</a>
+
+			</nav>
+
+			<div id="socialLinks">
+
+				<a href="#" aria-label="YouTube">
+
+					<img src="YoutubeIconBlack.png" alt="">
+
+				</a>
+
+				<a href="#" aria-label="Facebook">
+
+					<img src="FacebookIconBlack.png" alt="">
+
+				</a>
+
+				<a href="#" aria-label="Instagram">
+
+					<img src="InstagramIconBlack.png" alt="">
+
+				</a>
+
+			</div>
+
+		</header>
+		
+		<main>
+			
+			<section id="scheduleSection">
+				
+				<div class="scheduleWrapper">
+			
+					<h1>Upcoming Shows</h1>
+			
+					<table>
+
+						<thead>
+
+							<tr>
+
+								<th scope="col">Date</th>
+								<th scope="col">Time</th>
+								<th scope="col">Venue</th>
+
+							</tr>
+
+						</thead>
+
+						<tbody>
+
+							<tr>
+
+								<td>Aug. 4</td>
+								<td>9pm &ndash; 1am</td>
+								<td>Golden Nugget</td>
+
+							</tr>
+
+							<tr>
+
+								<td>Aug. 11</td>
+								<td>9pm &ndash; 1am</td>
+								<td>The Excalibur</td>
+
+							</tr>
+
+							<tr>
+
+								<td>Aug. 12</td>
+								<td>10pm &ndash; 2am</td>
+								<td>Carnaval Court</td>
+
+							</tr>
+
+							<tr>
+
+								<td>Aug. 19</td>
+								<td>9pm &ndash; 1am</td>
+								<td>Golden Nugget</td>
+
+							</tr>
+
+							<tr>
+
+								<td>Aug. 25</td>
+								<td>8pm &ndash; 12am</td>
+								<td>NYNY Bridge</td>
+
+							</tr>
+
+							<tr>
+
+								<td>Aug. 26</td>
+								<td>10pm &ndash; 2am</td>
+								<td>Carnaval Court</td>
+
+							</tr>
+
+						</tbody>
+
+					</table>
+		
+				</div>
+				
+			</section>
+			
+			<section id="pastVenues">
+
+				<div class="venuesWrapper">
+
+					<h2>Past Venues</h2>
+
+					<div class="venueLogos">
+
+						<img
+							src="GoldenNuggetLogo.png"
+							alt="Golden Nugget"
+						>
+
+						<img
+							src="HarrahsLogo.png"
+							alt="Harrah's Las Vegas"
+						>
+
+						<img
+							src="ParisLogo.png"
+							alt="Paris Hotel and Casino"
+						>
+
+						<img
+							src="HardRockLogo.png"
+							alt="Hard Rock Hotel and Casino"
+						>
+
+						<img
+							src="VirginHotelLogo.png"
+							alt="Virgin Hotel"
+						>
+
+					</div>
+
+				</div>
+
+			</section>
+		
+		</main>
+		
+		<!--Universal footer-->
+		<footer>
+			
+			<div class="footerWrapper">
+
+				<!-- Crown Avenue Logo -->
+				<div class="footerColumn footerBrand">
+
+					<a href="Homepage.html">
+						<img
+							src="TipJarLogo.png"
+							alt="Crown Avenue homepage"
+						>
+					</a>
+
+					<div class="footerSocials">
+
+						<a href="#" aria-label="Crown Avenue on YouTube">
+							<img src="YouTubeIconBlack.png" alt="">
+						</a>
+
+						<a href="#" aria-label="Crown Avenue on Facebook">
+							<img src="FacebookIconBlack.png" alt="">
+						</a>
+
+						<a href="#" aria-label="Crown Avenue on Instagram">
+							<img src="InstagramIconBlack.png" alt="">
+						</a>
+
+					</div>
+
+				</div>
+
+				<!-- Contact -->
+				<div class="footerColumn">
+
+					<h2>Contact</h2>
+
+					<p>
+						<a href="mailto:booking@CrownAvenueBand.com">
+							booking@CrownAvenueBand.com
+						</a>
+					</p>
+
+					<p>
+						<a href="Booking.html">
+							Booking &amp; Contact
+						</a>
+					</p>
+
+					<p>
+						<a href="tel:+17025555555">
+							(702) 555-5555
+						</a>
+					</p>
+
+				</div>
+
+				<!-- Mailing List -->
+				<div class="footerColumn">
+
+					<h2>Mail List</h2>
+
+					<form id="mailListForm" action="#" method="post">
+
+						<label for="mailName">Name</label>
+
+						<input
+							type="text"
+							id="mailName"
+							name="mailName"
+							placeholder="Your Name"
+						>
+
+						<label for="mailEmail">Email</label>
+
+						<input
+							type="email"
+							id="mailEmail"
+							name="mailEmail"
+							placeholder="name@email.com"
+						>
+
+						<input
+							class="footerSubmit"
+							type="submit"
+							value="Join"
+						>
+
+					</form>
+
+				</div>
+
+				<!-- Site Information -->
+				<div class="footerColumn">
+
+					<h2>Site Info</h2>
+
+					<a href="Booking.html#faq">
+						FAQ
+					</a>
+
+					<a href="MeetTheBand.html">
+						Meet the Band
+					</a>
+
+					<a href="Gallery.html">
+						Gallery
+					</a>
+
+					<a href="Schedule.html">
+						Schedule
+					</a>
+
+					<a href="Booking.html">
+						Book Us
+					</a>
+
+				</div>
+
+			</div>
+
+
+			<div id="footerBottom">
+
+				<p>
+					&copy; 2026 Crown Avenue. All rights reserved.
+				</p>
+
+				<p>
+					Website designed by Merely Mira.
+				</p>
+
+			</div>
+		
+		</footer>
+		
+	</body>
+</html>
