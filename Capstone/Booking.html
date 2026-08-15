@@ -1,0 +1,864 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		
+		<title>Booking Form</title>
+		
+		<style>
+		
+			@font-face {
+				font-family: "Woodward";
+				src: url("Woodward-Regular.ttf") format("truetype");
+			}
+			
+			/* Universal Call To Action Button styles */
+		
+			.ctaButton {
+				display: inline-block;
+				margin-top: 15px;
+				padding: 12px 28px;
+				font-family: Woodward, Arial, sans-serif;
+				font-size: 24pt;
+				letter-spacing: 2px;
+				line-height: 1em;
+				color: white;
+				background-color: #96011b;
+				border: 2px solid #640012;
+				border-radius: 4px;
+				box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.3);
+				text-decoration: none;
+				text-transform: uppercase;
+				transition: background-color 0.2s ease, transform 0.2s ease;
+			}
+
+			.ctaButton:hover {
+				background-color: #640012;
+				transform: scale(1.04);
+			}
+
+			.bookingWrapper input.ctaButton {
+				grid-column: 1 / 3;
+				width: auto;
+				margin: 12px auto 0 auto;
+				padding: 12px 28px;
+				font-family: Woodward, Arial, sans-serif;
+				font-size: 24pt;
+				letter-spacing: 2px;
+				line-height: 1em;
+				color: white;
+				background-color: #96011b;
+				border: 2px solid #640012;
+				border-radius: 4px;
+				box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.3);
+				text-transform: uppercase;
+				cursor: pointer;
+			}
+
+			.bookingWrapper input.ctaButton:hover {
+				background-color: #640012;
+				transform: scale(1.04);
+			}
+			
+			/* Universal Header */
+
+			header {
+				position: relative;
+				width: 100%;
+				height: 100px;
+				display: flex;
+				align-items: center;
+				padding: 0 25px;
+				box-sizing: border-box;
+				background-color: #96011B;
+				z-index: 10;
+			}
+
+			#headerLogoLink {
+				display: block;
+			}
+
+			#headerLogo {
+				width: 185px;
+				height: auto;
+				display: block;
+			}
+
+			nav {
+				flex: 1;
+				text-align: center;
+			}
+
+			nav a {
+				padding: 0 8px;
+				font-family: Woodward, Arial, sans-serif;
+				font-size: 40px;
+				letter-spacing: 3px;
+				font-weight: normal;
+				color: white;
+				text-shadow: 1px 1px 3px black;
+				text-decoration: none;
+				border-right: 1px solid white;
+			}
+
+			nav a:last-child {
+				border-right: none;
+			}
+
+			nav a:hover {
+				color: #96011b;
+			}
+
+			#socialLinks {
+				display: flex;
+				align-items: center;
+				gap: 12px;
+			}
+
+			#socialLinks img {
+				width: 40px;
+				height: 40px;
+				display: block;
+				object-fit: contain;
+			}
+			
+		/* Booking Hero */
+			
+			#bookingSection {
+				width: 100%;
+				padding: 35px 40px 55px 40px;
+				box-sizing: border-box;
+				background-image: url("BookingBackground.jpg");
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: cover;
+				position: relative;
+			}
+			
+			#bookingSection::before {
+				content: "";
+				position: absolute;
+				inset: 0;
+				background: rgba(0, 0, 0, 0.30);
+			}
+			
+			.bookingPageWrapper {
+				width: 100%;
+				max-width: 1050px;
+				margin: 0 auto;
+				position: relative;
+				z-index: 1;
+			}
+			
+			.bookingPageWrapper > h1 {
+				margin: 0 0 10px 0;
+				font-family: "Woodward", Impact, sans-serif;
+				font-size: 60pt;
+				font-weight: normal;
+				letter-spacing: 5px;
+				line-height: 1em;
+				text-align: center;
+				text-transform: uppercase;
+				color: white;
+				text-shadow: 3px 4px 3px #333333;
+			}
+			
+			#intro {
+				width: 100%;
+				max-width: 650px;
+				margin: 0 auto 20px auto;
+				font-family: Inter, Arial, sans-serif;
+				font-size: 12pt;
+				line-height: 1.45em;
+				text-align: center;
+				color: white;
+				text-shadow: 1px 1px 2px black;
+			}
+			
+			#bookingForm {
+				width: 100%;
+				max-width: 700px;
+				margin: 0 auto;
+				padding: 20px 30px;
+				box-sizing: border-box;
+				background-color: rgba(235, 235, 235, 0.72);
+				border: 1px solid dimgray;
+				border-radius: 6px;
+				box-shadow: 2px 3px 8px #222222;
+			}
+			
+			.formRow {
+				display: flex;
+				align-items: center;
+				margin-bottom: 18px;
+			}
+			
+			.formRow label {
+				width: 180px;
+				font-family: "Woodward", Impact, sans-serif;
+				font-size: 23pt;
+				letter-spacing: 2px;
+				color: #4b1720;
+				text-transform: uppercase;
+				text-shadow: 3px 4px 3px #eeeeee;
+			}
+			
+			#bookingForm input:not([type="submit"]), #bookingForm select, #bookingForm textarea {
+				width: 100%;
+				padding: 10px;
+				box-sizing: border-box;
+				border: 1px solid #777777;
+				border-radius: 4px;
+				background-color: white;
+				font-family: Inter, Arial, sans-serif;
+				font-size: 10.5pt;
+				color: #333333;
+			}
+			
+			#bookingForm input:focus, #bookingForm select:focus, #bookingForm textarea:focus {
+				outline: 2px solid #a90021;
+			}
+			
+			#bookingForm textarea {
+				height: 150px;
+				resize: vertical;
+			}
+			
+			#messageRow {
+				align-items: flex-start;
+			}
+			
+			#messageRow label {
+				padding-top: 8px;
+			}
+			
+			#submitButton {
+				width: 320px;
+				display: block;
+				margin: 20px auto 0 auto;
+				cursor: pointer;
+			}
+			
+			/* Frequently Asked Questions */
+
+			#faq {
+				width: 100%;
+
+				padding: 45px 40px 75px 40px;
+				box-sizing: border-box;
+
+				background-color: #eeeeee;
+			}
+
+			.faqWrapper {
+				width: 100%;
+				max-width: 1100px;
+
+				margin: 0 auto;
+			}
+
+			.faqWrapper > h2 {
+				margin: 0 0 35px 0;
+
+				font-family: Woodward, Arial, sans-serif;
+				font-size: 46pt;
+				font-weight: normal;
+				letter-spacing: 3px;
+
+				text-transform: uppercase;
+
+				color: #53171c;
+			}
+
+			#faq details {
+				margin: 0 auto 25px auto;
+			}
+
+			#faq summary {
+				position: relative;
+
+				padding: 10px 25px 10px 65px;
+
+				font-family: Georgia, "Times New Roman", serif;
+				font-size: 20pt;
+
+				color: #53171c;
+
+				border: 2px solid #333333;
+				border-radius: 25px;
+
+				cursor: pointer;
+
+				list-style: none;
+			}
+
+			#faq summary::-webkit-details-marker {
+				display: none;
+			}
+
+			#faq summary::before {
+				content: "+";
+
+				position: absolute;
+				left: 18px;
+				top: 50%;
+
+				width: 28px;
+				height: 28px;
+
+				display: flex;
+				align-items: center;
+				justify-content: center;
+
+				transform: translateY(-50%);
+
+				font-family: Inter, Arial, sans-serif;
+				font-size: 18px;
+
+				color: #333333;
+
+				border: 1px solid #333333;
+				border-radius: 50%;
+			}
+
+			#faq details[open] summary::before {
+				content: "−";
+			}
+
+			#faq details p {
+				margin: 12px 50px 5px 65px;
+
+				font-family: Inter, Arial, sans-serif;
+				font-size: 11pt;
+				line-height: 1.55em;
+
+				color: #536070;
+			}
+			
+			/* Universal Footer */
+		
+			footer {
+				width: 100%;
+				padding: 55px 40px 25px 40px;
+				box-sizing: border-box;
+				background-color: #222222;
+				color: white;
+			}
+
+			.footerWrapper {
+				width: 100%;
+				max-width: 1200px;
+				margin: 0 auto;
+				display: grid;
+				grid-template-columns: 1.2fr 1fr 1.3fr 1fr;
+				gap: 55px;
+				align-items: start;
+			}
+
+			.footerColumn {
+				font-family: Inter, Arial, sans-serif;
+				font-size: 10.5pt;
+				line-height: 1.5em;
+			}
+
+			.footerColumn h2 {
+				margin: 0 0 18px 0;
+				font-family: Woodward, Arial, sans-serif;
+				font-size: 24pt;
+				font-weight: normal;
+				letter-spacing: 2px;
+				line-height: 1em;
+				text-transform: uppercase;
+				color: white;
+			}
+
+			.footerColumn p {
+				margin: 0 0 8px 0;
+			}
+
+			.footerColumn a {
+				display: block;
+				margin-bottom: 8px;
+				color: white;
+				text-decoration: none;
+				transition: color 0.2s ease;
+			}
+
+			.footerColumn a:hover {
+				color: #96011b;
+			}
+
+
+			/* Footer Logo */
+
+			.footerBrand > a {
+				display: block;
+			}
+
+			.footerBrand > a img {
+				width: 190px;
+				height: auto;
+				display: block;
+				margin-bottom: 22px;
+			}
+
+			/* Footer Social Icons */
+
+			.footerSocials {
+				display: flex;
+				gap: 14px;
+				align-items: center;
+			}
+
+			.footerSocials a {
+				margin: 0;
+			}
+
+			.footerSocials img {
+				width: 30px;
+				height: 30px;
+				display: block;
+				object-fit: contain;
+				transition: transform 0.2s ease;
+			}
+
+			.footerSocials img:hover {
+				transform: scale(1.10);
+			}
+
+			/* Mailing List */
+
+			#mailListForm {
+				display: grid;
+				grid-template-columns: 65px 1fr;
+				gap: 10px;
+				align-items: center;
+			}
+
+			#mailListForm label {
+				font-family: Inter, Arial, sans-serif;
+				font-size: 10pt;
+				color: white;
+			}
+
+			#mailListForm input[type="text"],
+			#mailListForm input[type="email"] {
+				width: 100%;
+				padding: 8px;
+				box-sizing: border-box;
+				font-family: Inter, Arial, sans-serif;
+				font-size: 9pt;
+				background-color: #222222;
+				border: 1px solid #777777;
+				border-radius: 3px;
+			}
+
+			.footerSubmit {
+				grid-column: 1 / 3;
+				width: 95px;
+				margin: 5px auto 0 auto;
+				padding: 7px 12px;
+				font-family: Woodward, Arial, sans-serif;
+				font-size: 15pt;
+				letter-spacing: 1px;
+				color: white;
+				background-color: #96011b;
+				border: 1px solid #640012;
+				border-radius: 3px;
+				cursor: pointer;
+			}
+
+			.footerSubmit:hover {
+				background-color: #640012;
+			}
+
+			/* Copyright */
+
+			#footerBottom {
+				width: 100%;
+				max-width: 1200px;
+				display: flex;
+				justify-content: space-between;
+				margin: 40px auto 0 auto;
+				padding-top: 18px;
+				border-top: 1px solid rgba(255, 255, 255, 0.25);
+			}
+
+			#footerBottom p {
+				margin: 0;
+				font-family: Inter, Arial, sans-serif;
+				font-size: 8.5pt;
+				color: #cccccc;
+			}
+		
+		</style>
+		
+	</head>
+
+	<body>
+		
+		<header>
+
+			<!--Universal navigation-->
+			<a href= "Homepage.html" id= "headerLogoLink">
+				<img id= "headerLogo" src= "CrownAvenueLogoOG.png" alt= "Crown Avenue homepage">
+			</a>
+
+			<nav aria-label="Main navigation">
+
+				<a href= "Homepage.html">Home</a>
+				<a href= "MeetTheBand.html">Meet the Band</a>
+				<a href="Gallery.html">Gallery</a>
+				<a href="ExploreOurSound.html">Explore Our Sound</a>
+				<a href="Schedule.html">Schedule</a>
+				<a href= "Booking.html">Book Us</a>
+
+			</nav>
+
+			<div id="socialLinks">
+
+				<a href="#" aria-label="YouTube">
+
+					<img src="YouTubeIcon.png" alt="">
+
+				</a>
+
+				<a href="#" aria-label="Facebook">
+
+					<img src="FacebookIcon.png" alt="">
+
+				</a>
+
+				<a href="#" aria-label="Instagram">
+
+					<img src="InstagramIcon.png" alt="">
+
+				</a>
+
+			</div>
+
+		</header>
+		
+		<main>
+			
+			<section id="bookingSection">
+				
+				<div class="bookingPageWrapper">
+			
+					<h1>Booking Crown Avenue</h1>
+			
+					<p id="intro">
+
+						Ready to elevate your event with the unmatched energy of Crown Avenue? Fill out the form below to secure your date and let the music take center stage at your next unforgettable celebration.
+
+					</p>
+			
+		<!--This form is just a visual demonstration and isn't currently connected to a form-processing service.-->
+			
+					<form id="bookingForm" action="#" method="post">
+
+						<div class="formRow">
+
+							<label for="name">Name</label>
+
+							<input type="text" id="name" name="name" placeholder="John Doe" required>
+
+						</div>
+
+						<div class="formRow">
+
+							<label for="email">Email</label>
+
+							<input type="email" id="email" name="email" placeholder="name@email.com" required>
+
+						</div>
+
+						<div class="formRow">
+
+							<label for="phone">Phone Number</label>
+
+							<input type="tel" id="phone" name="phone" placeholder="555-555-5555">
+
+						</div>
+
+						<div class="formRow">
+
+							<label for="eventDate">Event Date</label>
+
+							<input type="date" id="eventDate" name="eventDate">
+
+						</div>
+
+						<div class="formRow">
+
+							<label for="eventType">Event Type</label>
+
+							<select id="eventType" name="eventType">
+
+								<option value="">--Select One--</option>
+								<option value="wedding">Wedding</option>
+								<option value="corporate">Corporate Event</option>
+								<option value="casino">Casino or Hotel Event</option>
+								<option value="private-party">Private Party</option>
+								<option value="festival">Festival</option>
+								<option value="other">Other</option>
+
+							</select>
+
+						</div>
+
+						<div class="formRow">
+
+							<label for="location">Location</label>
+
+							<input type="text" id="location" name="location" placeholder="Venue, City, State">
+
+						</div>
+
+						<div class="formRow" id="messageRow">
+
+							<label for="message">Event Details</label>
+
+							<textarea id="message" name="message" placeholder="Please tell us a little more about your event"></textarea>
+
+						</div>
+
+						<input type="submit" id="submitButton" class="ctaButton" value="Book the Band"/>
+
+					</form>
+					
+				</div>
+				
+			</section>
+			
+			<section id="faq">
+			
+				<div class="faqWrapper">
+					
+					<h2>Frequently Asked Questions</h2>
+					
+					<details>
+					
+						<summary>
+						
+							What songs do you play?
+						
+						</summary>
+						
+						<p>
+						
+							Crown Avenue performs a wide variety of music spanning rock, pop, alternative, country, dance, and other crowd favourites. Visit our Exlore Our Sound page to see examples from our set list.
+						
+						</p>
+					
+					</details>
+					
+					<details>
+					
+						<summary>
+						
+							How far in advance should I book the band?
+						
+						</summary>
+						
+						<p>
+						
+							Booking as early as possible is recommended, especially for weddings, holidays, adn other popular event dates. Availability varies throughout the year.
+						
+						</p>
+					
+					</details>
+					
+					<details>
+					
+						<summary>
+						
+							What is the booking process?
+						
+						</summary>
+						
+						<p>
+						
+							Submit the booking form with your event details and our team will follow up to discuss availability, event needs, pricing, and the next steps required to secure your date.
+						
+						</p>
+					
+					</details>
+					
+					<details>
+					
+						<summary>
+						
+							Do you require a deposit? What do your rates include?
+						
+						</summary>
+						
+						<p>
+						
+							Deposit requirements and rates vary depending on the event, location, performance length, and production needs. We will provide complete details during the booking process.
+						
+						</p>
+					
+					</details>
+					
+					<details>
+					
+						<summary>
+						
+							Can you play my favourite song?
+						
+						</summary>
+						
+						<p>
+						
+							We are happy to discuss special song requests. If there is a particular song you would like performed at your event, include it in your booking request.
+						
+						</p>
+					
+					</details>
+				
+				</div>
+			
+			</section>
+		
+		</main>
+		
+		<!--Universal footer-->
+			<footer>
+
+				<div class="footerWrapper">
+
+					<!-- Crown Avenue Logo -->
+					<div class="footerColumn footerBrand">
+
+						<a href="Homepage.html">
+							<img
+								src="TipJarLogoWhite.png"
+								alt="Crown Avenue homepage"
+							>
+						</a>
+
+						<div class="footerSocials">
+
+							<a href="#" aria-label="Crown Avenue on YouTube">
+								<img src="YouTubeIcon.png" alt="">
+							</a>
+
+							<a href="#" aria-label="Crown Avenue on Facebook">
+								<img src="FacebookIcon.png" alt="">
+							</a>
+
+							<a href="#" aria-label="Crown Avenue on Instagram">
+								<img src="InstagramIcon.png" alt="">
+							</a>
+
+						</div>
+
+					</div>
+
+					<!-- Contact -->
+					<div class="footerColumn">
+
+						<h2>Contact</h2>
+
+						<p>
+							<a href="mailto:booking@CrownAvenueBand.com">
+								booking@CrownAvenueBand.com
+							</a>
+						</p>
+
+						<p>
+							<a href="Booking.html">
+								Booking &amp; Contact
+							</a>
+						</p>
+
+						<p>
+							<a href="tel:+17025555555">
+								(702) 555-5555
+							</a>
+						</p>
+
+					</div>
+
+					<!-- Mailing List -->
+					<div class="footerColumn">
+
+						<h2>Mail List</h2>
+
+						<form id="mailListForm" action="#" method="post">
+
+							<label for="mailName">Name</label>
+
+							<input
+								type="text"
+								id="mailName"
+								name="mailName"
+								placeholder="Your Name"
+							>
+
+							<label for="mailEmail">Email</label>
+
+							<input
+								type="email"
+								id="mailEmail"
+								name="mailEmail"
+								placeholder="name@email.com"
+							>
+
+							<input
+								class="footerSubmit"
+								type="submit"
+								value="Join"
+							>
+
+						</form>
+
+					</div>
+
+					<!-- Site Information -->
+					<div class="footerColumn">
+
+						<h2>Site Info</h2>
+
+						<a href="Booking.html#faq">
+							FAQ
+						</a>
+
+						<a href="MeetTheBand.html">
+							Meet the Band
+						</a>
+
+						<a href="Gallery.html">
+							Gallery
+						</a>
+
+						<a href="Schedule.html">
+							Schedule
+						</a>
+
+						<a href="Booking.html">
+							Book Us
+						</a>
+
+					</div>
+
+				</div>
+
+
+				<div id="footerBottom">
+
+					<p>
+						&copy; 2026 Crown Avenue. All rights reserved.
+					</p>
+
+					<p>
+						Website designed by Merely Mira.
+					</p>
+
+				</div>
+
+			</footer>
+		
+	</body>
+</html>
