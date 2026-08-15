@@ -788,6 +788,23 @@
 
 			}
 
+			// Opens the carousel to the band member selected on the homepage
+
+			const urlParams = new URLSearchParams(window.location.search);
+			const selectedMember = urlParams.get("member");
+			
+			if (selectedMember) {
+			
+			    const memberIndex = members.findIndex(function(member) {
+			        return member.name.toLowerCase() === selectedMember.toLowerCase();
+			    });
+			
+			    if (memberIndex !== -1) {
+			        showMember(memberIndex);
+			    }
+			
+			}
+
 		</script>
 
 	</body>
